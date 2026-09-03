@@ -1,16 +1,17 @@
 /* ===== 全局底色（贴近截图的蓝） ===== */
 html, body { margin: 0; padding: 0; }
+* { box-sizing: border-box; }
 .page { min-height: 100vh; background: #1c43ae; }
 
 /* 顶部栏 */
 .topbar { height: 50px; padding: 9px 13px 0 13px; display: flex; align-items: flex-start; justify-content: space-between; background: linear-gradient(180deg, #1a338c, rgba(26,51,140,0)); }
-.brand { display: flex; align-items: center; }
-.brand-logo { width: 31px; height: 31px; border-radius: 7px; background: #fff; box-shadow: 0 3px 6px rgba(0,0,0,.25); padding: 2px; box-sizing: content-box; }
+.brand { display: flex; align-items: center; min-width: 0; }
+.brand-logo { width: 31px; height: 31px; border-radius: 7px; background: #fff; box-shadow: 0 3px 6px rgba(0,0,0,.25); padding: 2px; box-sizing: content-box; flex-shrink: 0; }
 .brand-logo img { width: 100%; height: 100%; border-radius: 5px; object-fit: contain; }
-.brand-txt { margin-left: 6px; display: flex; flex-direction: column; }
-.brand-name { color: #eaf0ff; font-size: 14px; font-weight: 700; line-height: 16px; }
-.brand-sub { color: #bcd0ff; font-size: 10px; margin-top: 1px; }
-.top-download { margin-top: 3px; background: linear-gradient(180deg, #ff922e, #f07700); padding: 9px 18px; border-radius: 9px; box-shadow: 0 5px 9px rgba(0,0,0,.18); cursor: pointer; }
+.brand-txt { margin-left: 6px; display: flex; flex-direction: column; min-width: 0; }
+.brand-name { color: #eaf0ff; font-size: 14px; font-weight: 700; line-height: 16px; white-space: nowrap; }
+.brand-sub { color: #bcd0ff; font-size: 10px; margin-top: 1px; white-space: nowrap; }
+.top-download { margin-top: 3px; background: linear-gradient(180deg, #ff922e, #f07700); padding: 9px 18px; border-radius: 9px; box-shadow: 0 5px 9px rgba(0,0,0,.18); cursor: pointer; flex-shrink: 0; }
 .top-download-txt { color: #fff; font-weight: 700; font-size: 13px; }
 
 .brand-name, .brand-sub, .feature-title, .feature-sub, .p-title, .p-text, .level-name, .level-rate, .level-sub, .section-title, .section-foot-txt, .mid-download-txt { display: block; }
@@ -22,34 +23,34 @@ html, body { margin: 0; padding: 0; }
 /* ===== hero ===== */
 .hero { padding: 9px 13px 5px 13px; }
 .hero-title { margin-top: 4px; text-align: center; }
-.hero-title-line { display: block; color: #fff; font-size: 28px; font-weight: 900; letter-spacing: 2px; text-shadow: 0 3px 0 rgba(0,0,0,.16); line-height: 35px; }
+.hero-title-line { display: block; color: #fff; font-size: clamp(22px, 7vw, 28px); font-weight: 900; letter-spacing: 2px; text-shadow: 0 3px 0 rgba(0,0,0,.16); line-height: 1.25; }
 .hero-ill-wrap { margin-top: 9px; display: flex; justify-content: center; }
-.hero-ill { width: 280px; border-radius: 15px; }
+.hero-ill { width: min(280px, 80vw); max-width: 100%; border-radius: 15px; }
 
 /* 主按钮 */
-.btn-primary { margin: 13px auto 0 auto; width: 260px; height: 43px; border-radius: 10px; background: linear-gradient(180deg, #ff922e, #f07700); display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 9px rgba(0,0,0,.18); border: 2px solid hsla(0,0%,100%,.18); cursor: pointer; }
+.btn-primary { margin: 13px auto 0 auto; width: min(260px, 82vw); height: 43px; border-radius: 10px; background: linear-gradient(180deg, #ff922e, #f07700); display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 9px rgba(0,0,0,.18); border: 2px solid hsla(0,0%,100%,.18); cursor: pointer; }
 .btn-primary-txt { color: #fff; font-size: 16px; font-weight: 800; }
 
 /* ===== panel: Earn Money Online ===== */
 .panel { margin: 14px 10px 0 10px; border-radius: 15px; background: rgba(15,40,120,.2); padding-bottom: 13px; }
 .panel-head { display: flex; justify-content: center; margin-top: 5px; }
-.panel-head-inner { width: 310px; height: 46px; border-radius: 13px; background: #244fb7; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 2px 0 hsla(0,0%,100%,.1); border: 1px solid hsla(0,0%,100%,.1); }
-.panel-head-txt { color: #eaf0ff; font-size: 15px; font-weight: 800; }
+.panel-head-inner { width: min(310px, 92vw); height: 46px; border-radius: 13px; background: #244fb7; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 2px 0 hsla(0,0%,100%,.1); border: 1px solid hsla(0,0%,100%,.1); }
+.panel-head-txt { color: #eaf0ff; font-size: clamp(14px, 4vw, 15px); font-weight: 800; text-align: center; padding: 0 8px; }
 .feature-card { margin: 8px 12px 0 12px; background: rgba(231,240,255,.85); border-radius: 14px; padding: 13px 9px; display: flex; justify-content: space-between; box-shadow: 0 8px 11px rgba(0,0,0,.15); }
-.feature-item { width: 103px; display: flex; flex-direction: column; align-items: center; }
+.feature-item { width: 32%; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .feature-icon-wrap { width: 54px; height: 54px; border-radius: 11px; background: hsla(0,0%,100%,.92); box-shadow: 0 5px 9px rgba(0,0,0,.1); display: flex; align-items: center; justify-content: center; margin-bottom: 8px; }
 .feature-icon { width: 33px; height: 33px; }
 .feature-title { color: #0a2d86; font-size: 13px; font-weight: 800; }
 .feature-sub { color: #0a2d86; font-size: 11px; margin-top: 3px; opacity: .88; }
 
 /* 中间 Download */
-.mid-download { margin: 13px auto 0 auto; width: 310px; height: 43px; border-radius: 10px; background: linear-gradient(180deg, #ff922e, #f07700); display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 9px rgba(0,0,0,.18); border: 2px solid hsla(0,0%,100%,.18); cursor: pointer; }
+.mid-download { margin: 13px auto 0 auto; width: min(310px, 92vw); height: 43px; border-radius: 10px; background: linear-gradient(180deg, #ff922e, #f07700); display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 9px rgba(0,0,0,.18); border: 2px solid hsla(0,0%,100%,.18); cursor: pointer; }
 .mid-download-txt { color: #fff; font-size: 16px; font-weight: 800; }
 
 /* ===== 通用 section 卡 ===== */
 .section-card { margin: 13px 10px 0 10px; border-radius: 15px; background: rgba(15,40,120,.2); padding: 9px; }
-.section-title-pill { width: 320px; height: 43px; margin: 0 auto; border-radius: 13px; background: hsla(0,0%,100%,.92); display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 9px rgba(0,0,0,.14); }
-.section-title { color: #10308a; font-size: 14px; font-weight: 900; }
+.section-title-pill { width: min(320px, 94vw); min-height: 43px; margin: 0 auto; border-radius: 13px; background: hsla(0,0%,100%,.92); display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 9px rgba(0,0,0,.14); padding: 0 10px; }
+.section-title { color: #10308a; font-size: 14px; font-weight: 900; text-align: center; }
 
 /* Why choose 内容 */
 .section-body { margin-top: 7px; padding: 11px 11px 9px 11px; border-radius: 11px; background: rgba(7,60,150,.35); }
@@ -60,12 +61,12 @@ html, body { margin: 0; padding: 0; }
 .section-foot-txt { color: #10308a; font-size: 12px; font-weight: 800; line-height: 17px; }
 
 /* 三级卡片 */
-.level-row { margin-top: 8px; padding: 9px 7px; border-radius: 11px; background: rgba(7,60,150,.35); display: flex; justify-content: space-between; }
-.level-item { width: 105px; border-radius: 11px; padding: 9px 7px 8px 7px; display: flex; flex-direction: column; align-items: center; box-shadow: 0 7px 10px rgba(0,0,0,.18); border: 1px solid hsla(0,0%,100%,.12); }
+.level-row { margin-top: 8px; padding: 9px 7px; border-radius: 11px; background: rgba(7,60,150,.35); display: flex; justify-content: space-between; gap: 8px; }
+.level-item { flex: 1; width: 0; border-radius: 11px; padding: 9px 7px 8px 7px; display: flex; flex-direction: column; align-items: center; box-shadow: 0 7px 10px rgba(0,0,0,.18); border: 1px solid hsla(0,0%,100%,.12); }
 .level-name { color: #fff; font-size: 13px; font-weight: 900; margin-bottom: 7px; text-transform: none; }
 .level-badge { width: 75px; height: 32px; border-radius: 16px; background: hsla(0,0%,100%,.92); display: flex; align-items: center; justify-content: center; box-shadow: inset 0 2px 0 rgba(0,0,0,.06); margin-bottom: 7px; }
 .level-rate { color: #10308a; font-size: 15px; font-weight: 900; }
-.level-sub { color: hsla(0,0%,100%,.85); font-size: 10px; margin-top: 2px; }
+.level-sub { color: hsla(0,0%,100%,.85); font-size: 10px; margin-top: 2px; text-align: center; }
 
 /* 三种颜色（贴近截图） */
 .level-a { background: linear-gradient(180deg, #6fa5ff, #4e77d6); }
@@ -73,3 +74,38 @@ html, body { margin: 0; padding: 0; }
 .level-c { background: linear-gradient(180deg, #59d88a, #39b86b); }
 .safe-gap { height: 20px; }
 .final-download { margin-bottom: 20px; }
+
+/* ===== 响应式（手机） ===== */
+@media (max-width: 360px) {
+  .brand-sub { display: none; }
+  .top-download { padding: 8px 14px; }
+  .top-download-txt { font-size: 12px; }
+  .feature-icon-wrap { width: 46px; height: 46px; }
+  .feature-icon { width: 28px; height: 28px; }
+  .feature-title { font-size: 12px; }
+  .feature-sub { font-size: 10px; }
+}
+
+/* ===== 响应式（平板及以上） ===== */
+@media (min-width: 600px) {
+  .page { max-width: 480px; margin: 0 auto; box-shadow: 0 0 40px rgba(0,0,0,.3); }
+  .hero-ill { width: 320px; }
+  .btn-primary { width: 300px; height: 48px; }
+  .btn-primary-txt, .mid-download-txt { font-size: 17px; }
+  .mid-download { width: 350px; height: 48px; }
+  .panel-head-inner { width: 350px; height: 50px; }
+  .section-title-pill { width: 360px; min-height: 48px; }
+  .panel { margin-left: auto; margin-right: auto; max-width: 480px; }
+  .section-card { margin-left: auto; margin-right: auto; max-width: 480px; }
+  .hero-title-line { font-size: 32px; }
+}
+
+/* 桌面背景 */
+@media (min-width: 600px) {
+  body { background: #0f2a6e; }
+}
+
+/* ===== 暗色安全区（底部） ===== */
+@media (display-mode: fullscreen) {
+  .scroll-content { padding-bottom: env(safe-area-inset-bottom, 0); }
+}
