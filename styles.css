@@ -11,7 +11,7 @@ html, body { margin: 0; padding: 0; }
 .brand-txt { margin-left: 6px; display: flex; flex-direction: column; min-width: 0; }
 .brand-name { color: #eaf0ff; font-size: 14px; font-weight: 700; line-height: 16px; white-space: nowrap; }
 .brand-sub { color: #bcd0ff; font-size: 10px; margin-top: 1px; white-space: nowrap; }
-.top-download { margin-top: 3px; background: linear-gradient(180deg, #ff922e, #f07700); padding: 9px 18px; border-radius: 9px; box-shadow: 0 5px 9px rgba(0,0,0,.18); cursor: pointer; flex-shrink: 0; }
+.top-download { margin: 3px 6px 0 0; background: linear-gradient(180deg, #ff922e, #f07700); padding: 8px 19px; border-radius: 9px; box-shadow: 0 5px 9px rgba(0,0,0,.18); cursor: pointer; flex-shrink: 0; }
 .top-download-txt { color: #fff; font-weight: 700; font-size: 13px; }
 
 .brand-name, .brand-sub, .feature-title, .feature-sub, .p-title, .p-text, .level-name, .level-rate, .level-sub, .section-title, .section-foot-txt, .mid-download-txt { display: block; }
@@ -78,7 +78,7 @@ html, body { margin: 0; padding: 0; }
 /* ===== 响应式（手机） ===== */
 @media (max-width: 360px) {
   .brand-sub { display: none; }
-  .top-download { padding: 8px 14px; }
+  .top-download { margin: 3px 6px 0 0; padding: 7px 15px; }
   .top-download-txt { font-size: 12px; }
   .feature-icon-wrap { width: 46px; height: 46px; }
   .feature-icon { width: 28px; height: 28px; }
