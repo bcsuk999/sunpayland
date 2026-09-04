@@ -17,8 +17,9 @@ html, body { margin: 0; padding: 0; }
 .brand-name, .brand-sub, .feature-title, .feature-sub, .p-title, .p-text, .level-name, .level-rate, .level-sub, .section-title, .section-foot-txt, .mid-download-txt { display: block; }
 
 /* 滚动 */
-.scroll { height: calc(100vh - 50px); overflow-y: auto; }
+.scroll { height: calc(100vh - 50px); overflow-y: auto; scrollbar-width: none; -ms-overflow-style: none; }
 .scroll-content { padding-bottom: 20px; }
+.scroll::-webkit-scrollbar { display: none; width: 0; height: 0; }
 
 /* ===== hero ===== */
 .hero { padding: 9px 13px 5px 13px; }
