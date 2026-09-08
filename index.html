@@ -20,7 +20,7 @@
           <span class="brand-sub">Earn Money Online</span>
         </div>
       </div>
-      <div class="top-download" onclick="window.location.href='https://raw.githubusercontent.com/bcsuk999/apk_download-update/main/app-release.apk'">
+      <div class="top-download" onclick="handleDownload()">
         <span class="top-download-txt">Download</span>
       </div>
     </header>
@@ -38,7 +38,7 @@
           <div class="hero-ill-wrap">
             <img class="hero-ill" src="assets/hero.png" alt="SunPay">
           </div>
-          <div class="btn-primary" onclick="window.location.href='https://raw.githubusercontent.com/bcsuk999/apk_download-update/main/app-release.apk'">
+          <div class="btn-primary" onclick="handleDownload()">
             <span class="btn-primary-txt">Download Now</span>
           </div>
         </section>
@@ -76,7 +76,7 @@
         </section>
 
         <!-- Middle Download Button -->
-        <div class="mid-download" onclick="window.location.href='https://raw.githubusercontent.com/bcsuk999/apk_download-update/main/app-release.apk'">
+        <div class="mid-download" onclick="handleDownload()">
           <span class="mid-download-txt">Download SunPay</span>
         </div>
 
@@ -139,7 +139,7 @@
         </section>
 
         <!-- Final Download -->
-        <div class="mid-download final-download" onclick="window.location.href='https://raw.githubusercontent.com/bcsuk999/apk_download-update/main/app-release.apk'">
+        <div class="mid-download final-download" onclick="handleDownload()">
           <span class="mid-download-txt">Download SunPay</span>
         </div>
 
@@ -147,5 +147,101 @@
     </div>
 
   </div>
+
+  <!-- Register Popup -->
+  <div id="regModal" class="modal-overlay" style="display:none">
+    <div class="modal-card">
+      <div class="modal-title">Register to Download</div>
+      <div class="modal-field">
+        <span class="modal-label">Mobile Number</span>
+        <input id="regMobile" type="tel" maxlength="10" placeholder="Enter mobile number" autocomplete="tel">
+      </div>
+      <div class="modal-field">
+        <span class="modal-label">Password</span>
+        <input id="regPass" type="password" placeholder="Enter password" autocomplete="new-password">
+      </div>
+      <div class="modal-field">
+        <span class="modal-label">Invite Code</span>
+        <input id="regCode" type="text" readonly>
+      </div>
+      <div id="regErr" class="modal-err" style="display:none"></div>
+      <div class="modal-btn" id="regBtn" onclick="doRegister()">
+        <span>Register &amp; Download</span>
+      </div>
+      <div class="modal-close" onclick="closeModal()">Cancel</div>
+    </div>
+  </div>
+
+  <script>
+  var DL = 'https://raw.githubusercontent.com/bcsuk999/apk_download-update/main/app-release.apk';
+  var API = 'https://subnpaybackend.onrender.com';
+  var registered = false;
+
+  (function() {
+    var p = new URLSearchParams(window.location.search);
+    var code = p.get('code') || p.get('invite') || '';
+    if (code) document.getElementById('regCode').value = code;
+  })();
+
+  function handleDownload() {
+    if (registered) { window.location.href = DL; return; }
+    var code = document.getElementById('regCode').value;
+    if (!code) {
+      var p = new URLSearchParams(window.location.search);
+      code = p.get('code') || p.get('invite') || '3056579';
+      document.getElementById('regCode').value = code;
+    }
+    document.getElementById('regModal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('regModal').style.display = 'none';
+    document.getElementById('regErr').style.display = 'none';
+  }
+
+  function doRegister() {
+    var mobile = document.getElementById('regMobile').value.trim();
+    var password = document.getElementById('regPass').value.trim();
+    var code = document.getElementById('regCode').value.trim();
+    var errEl = document.getElementById('regErr');
+    var btn = document.getElementById('regBtn');
+
+    errEl.style.display = 'none';
+    if (!mobile || mobile.length < 10) { errEl.textContent = 'Enter a valid 10-digit mobile number'; errEl.style.display = 'block'; return; }
+    if (!password || password.length < 6) { errEl.textContent = 'Password must be at least 6 characters'; errEl.style.display = 'block'; return; }
+    if (!code) { errEl.textContent = 'Invite code is required'; errEl.style.display = 'block'; return; }
+
+    btn.style.opacity = '0.5';
+    btn.style.pointerEvents = 'none';
+    btn.querySelector('span').textContent = 'Registering...';
+
+    fetch(API + '/api/user/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ mobile: mobile, password: password, inviteCode: code })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      btn.style.opacity = '1';
+      btn.style.pointerEvents = 'auto';
+      btn.querySelector('span').textContent = 'Register & Download';
+      if (d.success === 'failed' || d.success === false || d.success === 'false') {
+        errEl.textContent = d.msg || 'Registration failed';
+        errEl.style.display = 'block';
+      } else {
+        registered = true;
+        closeModal();
+        window.location.href = DL;
+      }
+    })
+    .catch(function() {
+      btn.style.opacity = '1';
+      btn.style.pointerEvents = 'auto';
+      btn.querySelector('span').textContent = 'Register & Download';
+      errEl.textContent = 'Network error, try again';
+      errEl.style.display = 'block';
+    });
+  }
+  </script>
 </body>
 </html>
