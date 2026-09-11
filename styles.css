@@ -146,3 +146,29 @@ html, body { margin: 0; padding: 0; }
   margin: 12px auto 0 auto; text-align: center; color: #8a95b5;
   font-size: 13px; font-weight: 600; cursor: pointer; padding: 4px;
 }
+
+/* ===== Social Sidebar ===== */
+.side {
+  position: fixed;
+  right: 0;
+  top: 214px;
+  width: 48px;
+  z-index: 100;
+}
+.side ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.side li { margin-bottom: 8px; }
+.side img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+.side a { display: block; transition: transform .15s ease; }
+.side a:hover { transform: scale(1.1); }
