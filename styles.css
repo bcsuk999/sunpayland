@@ -178,6 +178,8 @@ html, body { margin: 0; padding: 0; }
   cursor: pointer;
   transition: background-color 0.3s ease;
   border-bottom: 1px solid #333;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
 }
 
 .side2box:hover {
