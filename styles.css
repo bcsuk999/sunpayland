@@ -154,21 +154,42 @@ html, body { margin: 0; padding: 0; }
   top: 214px;
   width: 48px;
   z-index: 100;
+  display: block;
 }
+
 .side ul {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
-.side li { margin-bottom: 8px; }
-.side img {
-  display: block;
-  width: 40px;
-  height: 40px;
+
+.side li {
+  margin: 0;
+  padding: 0;
+}
+
+.side2box {
+  width: 48px;
+  height: 48px;
+  background-color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-bottom: 1px solid #333;
+}
+
+.side2box:hover {
+  background-color: #333333;
+}
+
+.side2box img {
+  width: 32px;
+  height: 32px;
   object-fit: contain;
 }
-.side a { display: block; transition: transform .15s ease; }
-.side a:hover { transform: scale(1.1); }
+
+.side li:last-child .side2box {
+  border-bottom: none;
+}
