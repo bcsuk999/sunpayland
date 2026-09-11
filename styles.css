@@ -177,9 +177,6 @@ html, body { margin: 0; padding: 0; }
   align-items: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  border-bottom: 1px solid #333;
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
 }
 
 .side2box:hover {
@@ -192,6 +189,10 @@ html, body { margin: 0; padding: 0; }
   object-fit: contain;
 }
 
+.side li:first-child .side2box {
+  border-top-left-radius: 12px;
+}
+
 .side li:last-child .side2box {
-  border-bottom: none;
+  border-bottom-left-radius: 12px;
 }
